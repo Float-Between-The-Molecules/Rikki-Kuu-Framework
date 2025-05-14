@@ -2,6 +2,8 @@
 class_name RikkiKuuMod
 extends RefCounted
 ## Main mod interface for Rikki Kuu
+##
+## @experimental
 
 # signals
 # enums
