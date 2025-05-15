@@ -30,22 +30,24 @@ extends Node
 
 #region remaining methods
 
-## the internal name of this mod, must match its folder in res://mods/
+## Internal name of this mod, must match its folder in res://mods/
 func get_shortname() -> String:
 	return ""
 
 
-## the proper name of this mod
+## Proper name of this mod
 func get_longname() -> String:
 	return ""
 
 
-## mods that must be available and loaded before this mod can load
+## Mods that must be available and loaded before this mod can load
+##
+## Generally the base mod is always required, except by the base mod itself
 func get_required_mods() -> Array[String]:
-	return []
+	return ["base"]
 
 
-## mods that if available must be loaded before this mod can load
+## Mods that if available must be loaded before this mod can load
 func get_optional_mods() -> Array[String]:
 	return []
 
