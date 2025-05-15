@@ -1,9 +1,14 @@
 #@icon
 class_name RikkiKuuMod
-extends RefCounted
+extends Node
 ## Main mod interface for Rikki Kuu
 ##
-## @experimental
+## Every mod is required to have a `mod.gd` file in its res://mods/ folder that
+## inherits from this class.
+##
+## Once loading order is determined, a mod becomes a child node of
+## `/root/ModManager`. Mods are unloaded in reverse order. Modded content cannot
+## be unloaded without restarting the game.
 
 # signals
 # enums
