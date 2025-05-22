@@ -1,14 +1,19 @@
 #@icon
-class_name RikkiKuuMod
+class_name RkMod
 extends Node
 ## Main mod interface for Rikki Kuu
 ##
 ## Every mod is required to have a `mod.gd` file in its res://mods/ folder that
 ## inherits from this class.
-##
-## Once loading order is determined, a mod becomes a child node of
-## `/root/ModManager`. Mods are unloaded in reverse order. Modded content cannot
-## be unloaded without restarting the game.
+## [br][br]
+## As long as mods meet their required & optional mods sorting, any loading order
+## is allowed.
+## [br][br]
+## When mods are loaded into the game, a derived instance of this class is
+## created to represent and interact with the given mod. Mods are attached /
+## detached to the mod manager instance to represent their load / unload events.
+## [br][br]
+## The resources for a mod pack cannot be unloaded without restarting the game.
 
 # signals
 # enums
@@ -19,7 +24,15 @@ extends Node
 # @onready variables
 
 # _static_init()
-# remaining static methods
+
+#region remaining static methods
+
+## Intended for [method Array.map] to convert a [RkMod] array into an array of shortnames.
+static func map_shortname(rkm:RkMod) -> String:
+	return rkm.get_shortname()
+
+#endregion
+
 # _init()
 # _enter_tree()
 # _ready()
@@ -41,7 +54,7 @@ func get_longname() -> String:
 
 
 ## Mods that must be available and loaded before this mod can load
-##
+## [br][br]
 ## Generally the base mod is always required, except by the base mod itself
 func get_required_mods() -> Array[String]:
 	return ["base"]
@@ -50,6 +63,11 @@ func get_required_mods() -> Array[String]:
 ## Mods that if available must be loaded before this mod can load
 func get_optional_mods() -> Array[String]:
 	return []
+
+
+## Returns concatenation of required and optional mods
+func get_base_mods() -> Array[String]:
+	return get_required_mods() + get_optional_mods()
 
 #endregion
 
