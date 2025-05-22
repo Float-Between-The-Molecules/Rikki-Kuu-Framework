@@ -44,7 +44,7 @@ static var instance:RkGame:
 
 ## Returns the running game version
 func get_version() -> Array[int]:
-	return []
+	return [0, 0, 0, 0]
 
 #endregion
 
