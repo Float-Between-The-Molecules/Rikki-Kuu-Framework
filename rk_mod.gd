@@ -34,11 +34,21 @@ static func map_shortname(rkm:RkMod) -> String:
 #endregion
 
 # _init()
-# _enter_tree()
+
+func _enter_tree() -> void:
+	print("mod activating")
+
 # _ready()
 # _process()
 # _physics_process()
-# remaining virtual methods
+
+#region remaining virtual methods
+
+func _exit_tree() -> void:
+	print("mod deactivating")
+
+#endregion
+
 # overridden custom methods
 
 #region remaining methods
